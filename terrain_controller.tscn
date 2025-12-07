@@ -2,6 +2,5 @@
 
 [ext_resource type="Script" uid="uid://bmiop5gsyc7yg" path="res://scripts/terrain_controller.gd" id="1_g2k0x"]
 
-
 [node name="TerrainController" type="Node3D"]
 script = ExtResource("1_g2k0x")

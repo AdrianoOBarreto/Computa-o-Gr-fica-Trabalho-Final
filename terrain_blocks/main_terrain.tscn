@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1tt2055n4lgk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fj7yv"]
+size = Vector2(20, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lvkt4"]
+data = PackedVector3Array(10, 0, 50, -10, 0, 50, 10, 0, -50, -10, 0, 50, -10, 0, -50, 10, 0, -50)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="main_terrain" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_fj7yv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="main_terrain"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="main_terrain/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lvkt4")
