@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://catjauy87vaak"]
+
+[node name="spaw_location" type="Node3D"]
+
+[node name="spaw_2" type="Node3D" parent="."]
+
+[node name="Label3D" type="Label3D" parent="spaw_2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spaw_2"]
+skeleton = NodePath("../../spaw_1")
+
+[node name="spaw_1" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spaw_1"]
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="spaw_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5697145)

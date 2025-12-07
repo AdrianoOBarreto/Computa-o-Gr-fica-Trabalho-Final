@@ -5,7 +5,7 @@ extends CharacterBody3D
 
 ## Speed of character movement
 const SPEED = 5.0
-const GRAVITY = 0.0
+const GRAVITY = 0
 const JUMP_VELOCITY = 5
 
 func _physics_process(_delta: float) -> void:

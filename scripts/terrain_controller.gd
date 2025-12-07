@@ -18,21 +18,37 @@ var terrain_belt: Array[MeshInstance3D] = []
 @export_dir var terrian_blocks_path = "res://terrain_blocks"
 
 @onready var main_terrain: Resource  = preload("res://terrain_blocks/main_terrain.tscn")
+@onready var obj1: Resource  = preload("res://terrain_blocks/arvore_0.tscn")
+
+
 
 var current_terrain_instance: Node
+var current_obj_instance: Node
 
 func _ready() -> void:
+	instantiate_objects()
 	spaw_terrain()
+	spaw_obj()
+	
+	
+func instantiate_objects() -> void:
+	current_terrain_instance = main_terrain.instantiate()
+	add_child(current_terrain_instance)
+	
+	current_obj_instance = obj1.instantiate()
+	add_child(current_obj_instance)
+
 
 func spaw_terrain() -> void:
-	var terrain_instance: Node = main_terrain.instantiate()
-	add_child(terrain_instance)
-	terrain_instance.position = Vector3(1, 1, -20)
-	current_terrain_instance  = terrain_instance
+	current_terrain_instance.position = Vector3(1, 1, -20)
 
 func _physics_process(delta: float) -> void:
 	_progress_terrain(delta)
+	
+	_progress_obj(delta)
 
+func spaw_obj() -> void:
+	current_obj_instance.position = Vector3(2, 2, -10)
 
 #func _init_blocks(number_of_blocks: int) -> void:
 #	for block_index in number_of_blocks:
@@ -50,6 +66,13 @@ func _progress_terrain(delta: float) -> void:
 	print(current_terrain_instance.position.z)
 	if(current_terrain_instance.position.z > 15):
 		current_terrain_instance.position = Vector3(1, 1, 20)
+
+
+func _progress_obj(delta: float) -> void:
+	current_obj_instance.position.z += terrain_velocity * delta
+	print(current_obj_instance.position.z)
+	if(current_obj_instance.position.z > 15):
+		current_obj_instance.position = Vector3(1, 1, -10)
 
 #	if terrain_belt[0].position.z >= terrain_belt[0].mesh.size.y/2:
 #		var last_terrain = terrain_belt[-1]
